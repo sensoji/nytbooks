@@ -1,0 +1,149 @@
+:root {
+    --light: #E8E7E7;
+    --dark: #3F3F3F;
+    --medium: #A9A9A9;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #ccc;
+  margin: 30px 50px;
+  line-height: 1.4;
+}
+
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1em;
+  grid-template-areas:
+    'display-book-list category-view'
+    'display-book-list book-item';
+}
+
+.display-book-list {
+  grid-area: display-book-list;
+}
+
+.display-book-list ul {
+  margin-top: 0;
+  display: grid;
+  grid-gap: 15px;
+  padding: 0;
+  grid-template-rows: 1fr;
+  list-style-type: none;
+  text-align: center;
+}
+
+.display-book-list ul li {
+  background: var(--dark);
+  display: block;
+  padding: 0.8rem;
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+
+.display-book-list ul li:hover{
+  cursor: pointer;
+  background: var(--medium);
+}
+
+.category-view {
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+  background: var(--dark);
+  box-shadow: var(--shadow);
+  color: white;
+  border-radius: 4px;
+}
+
+.book-item {
+  grid-area: book-item;
+  background: var(--light);
+  display: grid;
+  grid-gap:10px;
+  grid-template-areas:
+    'book-image book-details affiliate-link';
+  grid-template-columns: 1fr 2fr;
+  padding: 0.8rem;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  margin-bottom: 5px;
+}
+
+.book-image{
+  text-align: center;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book img{
+  margin: 10px auto;
+}
+
+.book-detail {
+  grid-area: book-detail;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.affiliate-link {
+  grid-area: affiliate-link;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+}
+
+.affiliate-link a:hover {
+  cursor: pointer;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+@media (max-width: 700px) {
+  body{
+    margin: 15px 25px;
+  }
+
+  .display-book-list ul {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+    margin-bottom: 5px;
+  }
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'display-book-list'
+      'book-item';
+  }
+
+  .book-item {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'book-image'
+      'book-details'
+      'affiliate-link';
+
+  }
+
+  .book-image {
+    text-align: center;
+    display: block;
+  }
+}
