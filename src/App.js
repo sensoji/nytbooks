@@ -3,7 +3,7 @@ import affiliate from './affiliate.gif';
 import axios from 'axios';
 import './App.css';
 
-const API_KEY = 'YOUR API KEY HERE!';
+const API_KEY = process.env.API_KEY;
 const ROOT_URL = `http://api.nytimes.com/svc/books/v3/lists/overview?api-key=${API_KEY}`;
 
 function DisplayBookLists(props){
